@@ -39,6 +39,7 @@ namespace TheLastSpellMod
             if (key.IsDown())
             {
                 Debug.Log("这里是Updatet()方法中的内容，你看到这条消息是因为你按下了F9");
+                TPSingleton<ResourceManager>.Instance.IncreaseMaxWorkers(99);
                 TPSingleton<ResourceManager>.Instance.RefillWorkers();
             }
         }
