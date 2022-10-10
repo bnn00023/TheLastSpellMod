@@ -27,7 +27,7 @@ namespace TheLastSpellMod
         {
             var name = MethodBase.GetCurrentMethod().Name;
             Debug.Log($"{name} 執行中");
-            __result = 10;
+            __result = 5;
         }
     }
 }
