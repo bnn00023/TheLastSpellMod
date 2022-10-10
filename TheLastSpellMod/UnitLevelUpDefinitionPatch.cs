@@ -20,5 +20,14 @@ namespace TheLastSpellMod
             __result[E_StatLevelUpRarity.SmallRarity] = 0;
             __result[E_StatLevelUpRarity.MediumRarity] = 0;
         }
+
+        [HarmonyPostfix]
+        [HarmonyPatch(typeof(UnitLevelUpDefinition), nameof(UnitLevelUpDefinition.MaxAmountOfReroll), MethodType.Getter)]
+        public static void UnitLevelUpDefinition_MaxAmountOfReroll_Postfix(ref int __result)
+        {
+            var name = MethodBase.GetCurrentMethod().Name;
+            Debug.Log($"{name} 執行中");
+            __result = 10;
+        }
     }
 }
