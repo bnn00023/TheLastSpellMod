@@ -1,13 +1,7 @@
 ﻿using HarmonyLib;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using TheLastStand.Definition.Unit;
 using TheLastStand.Manager;
-using TheLastStand.Model.Unit;
+using TPLib;
 using UnityEngine;
 
 namespace TheLastSpellMod
@@ -20,7 +14,11 @@ namespace TheLastSpellMod
         {
             var name = MethodBase.GetCurrentMethod().Name;
             Debug.Log($"{name} 執行中");
-            newValue *= 2;
+            if (newValue > TPSingleton<ResourceManager>.Instance.Gold)
+            {
+                var diffValue = newValue - TPSingleton<ResourceManager>.Instance.Gold;
+                newValue = TPSingleton<ResourceManager>.Instance.Gold + diffValue * 2;
+            }
             return true;
         }
     }
